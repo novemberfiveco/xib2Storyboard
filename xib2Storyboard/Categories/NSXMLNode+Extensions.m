@@ -13,7 +13,7 @@
 
 
 
-#pragma mark - NSXMLNode Extensions Category -
+#pragma mark - NSXMLNode extensions category -
 
 @implementation NSXMLNode (Extensions)
 

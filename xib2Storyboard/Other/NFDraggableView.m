@@ -13,7 +13,7 @@
 
 
 
-#pragma mark - NFDraggableView Class Extension -
+#pragma mark - NFDraggableView class extension -
 
 @interface NFDraggableView() <NSDraggingDestination>
 
@@ -21,7 +21,7 @@
 
 
 
-#pragma mark - NFDraggableView Implementation -
+#pragma mark - NFDraggableView implementation -
 
 @implementation NFDraggableView
 

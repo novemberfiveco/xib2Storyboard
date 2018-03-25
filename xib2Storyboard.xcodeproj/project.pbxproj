@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2260D884200D245A00F0FD12 /* NSXMLDocument+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260D883200D245A00F0FD12 /* NSXMLDocument+Extensions.m */; };
 		22BBAC1120024EB400102486 /* NFDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAC1020024EB400102486 /* NFDraggableView.m */; };
+		22DA8CC320685165004A462C /* NSXMLLayoutDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA8CC220685165004A462C /* NSXMLLayoutDocument.m */; };
 		630FD59E1FFCD53D003A9C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630FD59D1FFCD53D003A9C05 /* Assets.xcassets */; };
 		630FD5A11FFCD53D003A9C05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630FD59F1FFCD53D003A9C05 /* Main.storyboard */; };
 		630FD5AE1FFCD59A003A9C05 /* storyboard_template_ios.xml in Resources */ = {isa = PBXBuildFile; fileRef = 630FD5AC1FFCD59A003A9C05 /* storyboard_template_ios.xml */; };
@@ -17,15 +17,14 @@
 		634921EE20304F2D0054E622 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 634921EA20304F2D0054E622 /* Info.plist */; };
 		634921EF20304F2D0054E622 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 634921EB20304F2D0054E622 /* main.m */; };
 		634921F720304F890054E622 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 634921F220304F890054E622 /* AppDelegate.m */; };
-		634921F820304F890054E622 /* NSXMLXibDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 634921F420304F890054E622 /* NSXMLXibDocument.m */; };
 		634921F920304F890054E622 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634921F620304F890054E622 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2260D882200D245A00F0FD12 /* NSXMLDocument+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSXMLDocument+Extensions.h"; sourceTree = "<group>"; };
-		2260D883200D245A00F0FD12 /* NSXMLDocument+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSXMLDocument+Extensions.m"; sourceTree = "<group>"; };
 		22BBAC0F20024EB400102486 /* NFDraggableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NFDraggableView.h; sourceTree = "<group>"; };
 		22BBAC1020024EB400102486 /* NFDraggableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NFDraggableView.m; sourceTree = "<group>"; };
+		22DA8CC120685165004A462C /* NSXMLLayoutDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSXMLLayoutDocument.h; sourceTree = "<group>"; };
+		22DA8CC220685165004A462C /* NSXMLLayoutDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSXMLLayoutDocument.m; sourceTree = "<group>"; };
 		630FD5941FFCD53D003A9C05 /* xib2Storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xib2Storyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		630FD59D1FFCD53D003A9C05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		630FD5A01FFCD53D003A9C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -39,8 +38,6 @@
 		634921ED20304F2D0054E622 /* xib2Storyboard.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = xib2Storyboard.entitlements; sourceTree = "<group>"; };
 		634921F120304F890054E622 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		634921F220304F890054E622 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		634921F320304F890054E622 /* NSXMLXibDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSXMLXibDocument.h; sourceTree = "<group>"; };
-		634921F420304F890054E622 /* NSXMLXibDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSXMLXibDocument.m; sourceTree = "<group>"; };
 		634921F520304F890054E622 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		634921F620304F890054E622 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,8 +58,6 @@
 			children = (
 				630FD5B11FFCD5AF003A9C05 /* NSXMLNode+Extensions.h */,
 				630FD5B01FFCD5AF003A9C05 /* NSXMLNode+Extensions.m */,
-				2260D882200D245A00F0FD12 /* NSXMLDocument+Extensions.h */,
-				2260D883200D245A00F0FD12 /* NSXMLDocument+Extensions.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -133,8 +128,8 @@
 				634921F220304F890054E622 /* AppDelegate.m */,
 				634921F520304F890054E622 /* ViewController.h */,
 				634921F620304F890054E622 /* ViewController.m */,
-				634921F320304F890054E622 /* NSXMLXibDocument.h */,
-				634921F420304F890054E622 /* NSXMLXibDocument.m */,
+				22DA8CC120685165004A462C /* NSXMLLayoutDocument.h */,
+				22DA8CC220685165004A462C /* NSXMLLayoutDocument.m */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -221,10 +216,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				630FD5B21FFCD5AF003A9C05 /* NSXMLNode+Extensions.m in Sources */,
-				2260D884200D245A00F0FD12 /* NSXMLDocument+Extensions.m in Sources */,
+				22DA8CC320685165004A462C /* NSXMLLayoutDocument.m in Sources */,
 				22BBAC1120024EB400102486 /* NFDraggableView.m in Sources */,
 				634921F920304F890054E622 /* ViewController.m in Sources */,
-				634921F820304F890054E622 /* NSXMLXibDocument.m in Sources */,
 				634921F720304F890054E622 /* AppDelegate.m in Sources */,
 				634921EF20304F2D0054E622 /* main.m in Sources */,
 			);

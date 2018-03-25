@@ -9,11 +9,9 @@
 //  file that was distributed with this source code.
 //
 
-#import <Cocoa/Cocoa.h>
 
 
-
-#pragma mark - AppDelegate Interface -
+#pragma mark - AppDelegate interface -
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 

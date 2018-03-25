@@ -9,9 +9,8 @@
 //  file that was distributed with this source code.
 //
 
+// Apple Frameworks
+#import <Cocoa/Cocoa.h>
+
 // Categories
 #import "NSXMLNode+Extensions.h"
-#import "NSXMLDocument+Extensions.h"
-
-// XML
-#import "NSXMLXibDocument.h"

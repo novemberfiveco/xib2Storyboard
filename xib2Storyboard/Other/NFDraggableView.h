@@ -9,13 +9,11 @@
 //  file that was distributed with this source code.
 //
 
-#import <Cocoa/Cocoa.h>
-
 @class NFDraggableView;
 
 
 
-#pragma mark - NFDraggableViewDelegate Protocol -
+#pragma mark - NFDraggableViewDelegate protocol -
 
 @protocol NFDraggableViewDelegate <NSObject>
 
@@ -27,7 +25,7 @@
 
 
 
-#pragma mark - NFDraggableView Interface -
+#pragma mark - NFDraggableView interface -
 
 @interface NFDraggableView : NSView
 

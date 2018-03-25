@@ -9,11 +9,9 @@
 //  file that was distributed with this source code.
 //
 
-#import <Foundation/Foundation.h>
 
 
-
-#pragma mark - NSXMLNode Extensions Category -
+#pragma mark - NSXMLNode extensions category -
 
 @interface NSXMLNode (Extensions)
 

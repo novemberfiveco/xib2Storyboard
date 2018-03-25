@@ -9,11 +9,9 @@
 //  file that was distributed with this source code.
 //
 
-#import <Cocoa/Cocoa.h>
 
 
-
-#pragma mark - ViewController Interface -
+#pragma mark - ViewController interface -
 
 @interface ViewController : NSViewController
 

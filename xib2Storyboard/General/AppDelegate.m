@@ -13,7 +13,7 @@
 
 
 
-#pragma mark - AppDelegate Implementation -
+#pragma mark - AppDelegate implementation -
 
 @implementation AppDelegate
 

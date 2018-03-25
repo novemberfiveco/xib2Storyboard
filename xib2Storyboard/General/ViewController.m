@@ -10,11 +10,19 @@
 //
 
 #import "ViewController.h"
+
 #import "NFDraggableView.h"
+#import "NSXMLLayoutDocument.h"
+
+typedef NS_ENUM(NSInteger, ExportOption) {
+    ExportOptionIndividualStoryboards = 0,
+    ExportOptionSingleStoryboard = 1,
+    ExportOptionExistingStoryboard = 2
+};
 
 
 
-#pragma mark - ViewController Class Extension -
+#pragma mark - ViewController class extension -
 
 @interface ViewController () <NFDraggableViewDelegate, NSTableViewDataSource, NSTableViewDelegate>
 
@@ -22,7 +30,7 @@
 
 @property (nonatomic, weak) IBOutlet NSTableView *mainTableView;
 @property (nonatomic, weak) IBOutlet NSButton *removeXibButton;
-@property (nonatomic, weak) IBOutlet NSButton *exportAsSingleStoryboardToggle;
+@property (nonatomic, weak) IBOutlet NSComboBox *exportComboBox;
 @property (nonatomic, weak) IBOutlet NSButton *exportButton;
 
 
@@ -89,31 +97,67 @@
 
 - (IBAction)didClickGenerateButton:(id)sender {
     
-    NSMutableArray<NSXMLXibDocument *> *documents = [NSMutableArray new];
+    NSMutableArray<NSXMLLayoutDocument *> *documents = [NSMutableArray new];
     for (NSURL *selectedFileURL in self.selectedFileURLs) {
-        NSXMLXibDocument *document = [[NSXMLXibDocument alloc] initWithFileURL:selectedFileURL];
+        
+        NSXMLLayoutDocument *document = [[NSXMLLayoutDocument alloc] initWithFileURL:selectedFileURL layoutType:LayoutTypeXib];
         [documents addObject:document];
+        
     }
     
-    BOOL exportAsSingleStoryboard = self.exportAsSingleStoryboardToggle.state == NSControlStateValueOn;
-    if (exportAsSingleStoryboard) {
-        NSXMLDocument *iosStoryboard = [NSXMLDocument storyboardFromDocuments:documents forPlatform:PlatformIOS];
-        [iosStoryboard saveWithName:@"iOS_converted.storyboard" savePanelWindow:self.view.window];
-        
-        NSXMLDocument *tvosStoryboard = [NSXMLDocument storyboardFromDocuments:documents forPlatform:PlatformTVOS];
-        [tvosStoryboard saveWithName:@"tvOS_converted.storyboard" savePanelWindow:self.view.window];
-        return;
-    }
+    ExportOption selectedExportOption = MAX(0, self.exportComboBox.indexOfSelectedItem);
+    
+    switch (selectedExportOption) {
 
-    for (NSXMLXibDocument *document in documents) {
-        NSString *outputURLString = [NSString stringWithFormat:@"%@.%@", [document.fileURL.absoluteString stringByDeletingPathExtension], @"storyboard"];
-        NSURL *outputURL = [NSURL URLWithString:outputURLString];
-        
-        NSXMLDocument *iosStoryboard = [NSXMLDocument storyboardFromDocuments:@[document] forPlatform:PlatformIOS];
-        [iosStoryboard saveForURL:outputURL];
-        
-        NSXMLDocument *tvosStoryboard = [NSXMLDocument storyboardFromDocuments:@[document] forPlatform:PlatformTVOS];
-        [tvosStoryboard saveForURL:outputURL];
+        case ExportOptionIndividualStoryboards: {
+            
+            for (NSXMLLayoutDocument *document in documents) {
+                
+                NSString *outputURLString = [NSString stringWithFormat:@"%@.%@", [document.fileURL.absoluteString stringByDeletingPathExtension], @"storyboard"];
+                NSURL *outputURL = [NSURL URLWithString:outputURLString];
+                
+                NSXMLLayoutDocument *iosStoryboard = [NSXMLLayoutDocument generateStoryboardFromXib:document forPlatform:PlatformIOS];
+                if (iosStoryboard) {
+                    [iosStoryboard saveForURL:outputURL];
+                }
+                
+                NSXMLLayoutDocument *tvosStoryboard = [NSXMLLayoutDocument generateStoryboardFromXib:document forPlatform:PlatformTVOS];
+                if (tvosStoryboard) {
+                    [tvosStoryboard saveForURL:outputURL];
+                }
+            }
+            
+            break;
+        }
+            
+        case ExportOptionSingleStoryboard: {
+            
+            NSXMLLayoutDocument *iosStoryboard = [NSXMLLayoutDocument generateStoryboardFromXibs:[documents copy] forPlatform:PlatformIOS];
+            if (iosStoryboard) {
+                [iosStoryboard saveWithName:@"iOS_converted.storyboard" onWindow:self.view.window];
+            }
+            
+            NSXMLLayoutDocument *tvosStoryboard = [NSXMLLayoutDocument generateStoryboardFromXibs:[documents copy] forPlatform:PlatformTVOS];
+            if (tvosStoryboard) {
+                [tvosStoryboard saveWithName:@"tvOS_converted.storyboard" onWindow:self.view.window];
+            }
+            
+            break;
+        }
+            
+        case ExportOptionExistingStoryboard: {
+            
+            NSXMLLayoutDocument *document = [[NSXMLLayoutDocument alloc] initFromUserSelectionWithWindow:self.view.window layoutType:LayoutTypeStoryboard];
+            if (document) {
+                [document addXibs:documents];
+                [document save];
+            }
+            
+            break;
+        }
+            
+        default:
+            break;
     }
 }
 

@@ -92,19 +92,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="500" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="5fq-xz-t0J">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="5fq-xz-t0J">
                                 <rect key="frame" x="20" y="79" width="460" height="246"/>
                                 <clipView key="contentView" id="2yn-XS-M29">
                                     <rect key="frame" x="1" y="0.0" width="458" height="245"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="22" rowSizeStyle="automatic" headerView="p2c-gh-pRi" viewBased="YES" id="brX-98-k4e">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="p2c-gh-pRi" viewBased="YES" id="brX-98-k4e">
                                             <rect key="frame" x="0.0" y="0.0" width="458" height="222"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="458" minWidth="40" maxWidth="1000" id="bbe-a8-ZfZ">
+                                                <tableColumn identifier="" width="458" minWidth="40" maxWidth="1000" id="bbe-a8-ZfZ">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title=".xib's">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -188,13 +188,6 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xNC-5e-rPw">
-                                <rect key="frame" x="221" y="21" width="178" height="18"/>
-                                <buttonCell key="cell" type="check" title="Combine to single Storyboard" bezelStyle="regularSquare" imagePosition="right" alignment="center" controlSize="small" inset="2" id="XGV-cN-nwc">
-                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="smallSystem"/>
-                                </buttonCell>
-                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ISJ-2O-AnF">
                                 <rect key="frame" x="406" y="13" width="80" height="33"/>
                                 <constraints>
@@ -221,26 +214,41 @@
                                     <action selector="didClickLogo:" target="XfG-lQ-9wD" id="ztM-PL-bx7"/>
                                 </connections>
                             </button>
+                            <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sbo-ol-u2Z">
+                                <rect key="frame" x="147" y="17" width="253" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Zed-Rm-ltg"/>
+                                </constraints>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Export to individual Storyboard's" drawsBackground="YES" completes="NO" numberOfVisibleItems="3" id="vaY-ZI-atx">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Export Xib's to individual Storyboard's</string>
+                                        <string>Export Xib's to a single Storyboard</string>
+                                        <string>Export Xib's to an existing Storyboard</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
                         </subviews>
                         <constraints>
                             <constraint firstItem="shR-Nb-WUI" firstAttribute="centerY" secondItem="ISJ-2O-AnF" secondAttribute="centerY" id="2rI-Va-0vn"/>
                             <constraint firstItem="shR-Nb-WUI" firstAttribute="leading" secondItem="5fq-xz-t0J" secondAttribute="leading" id="3wf-p3-BbZ"/>
+                            <constraint firstItem="ISJ-2O-AnF" firstAttribute="leading" secondItem="sbo-ol-u2Z" secondAttribute="trailing" constant="15" id="D3z-WL-kC0"/>
                             <constraint firstItem="ISJ-2O-AnF" firstAttribute="trailing" secondItem="5fq-xz-t0J" secondAttribute="trailing" id="L2A-nK-i2m"/>
-                            <constraint firstItem="xNC-5e-rPw" firstAttribute="centerY" secondItem="ISJ-2O-AnF" secondAttribute="centerY" constant="1" id="N7m-XX-lB0"/>
                             <constraint firstItem="5fq-xz-t0J" firstAttribute="top" secondItem="NEu-zX-WhJ" secondAttribute="top" constant="25" id="Sta-Cm-K5e"/>
-                            <constraint firstItem="xNC-5e-rPw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NEu-zX-WhJ" secondAttribute="leading" constant="20" symbolic="YES" id="Zvd-l4-6Sf"/>
                             <constraint firstItem="ISJ-2O-AnF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NEu-zX-WhJ" secondAttribute="leading" constant="20" symbolic="YES" id="hIw-DG-m1T"/>
                             <constraint firstItem="5fq-xz-t0J" firstAttribute="centerX" secondItem="NEu-zX-WhJ" secondAttribute="centerX" id="hl1-AK-ece"/>
                             <constraint firstAttribute="bottom" secondItem="shR-Nb-WUI" secondAttribute="bottom" constant="18" id="i0q-aO-Nyi"/>
+                            <constraint firstItem="sbo-ol-u2Z" firstAttribute="centerY" secondItem="ISJ-2O-AnF" secondAttribute="centerY" id="n4B-o0-jTb"/>
                             <constraint firstAttribute="bottom" secondItem="ISJ-2O-AnF" secondAttribute="bottom" constant="20" id="qtE-Yg-jhF"/>
                             <constraint firstItem="5fq-xz-t0J" firstAttribute="leading" secondItem="NEu-zX-WhJ" secondAttribute="leading" constant="20" id="ujr-v1-iY6"/>
-                            <constraint firstItem="ISJ-2O-AnF" firstAttribute="leading" secondItem="xNC-5e-rPw" secondAttribute="trailing" constant="15" id="wpV-hg-h11"/>
                             <constraint firstItem="ISJ-2O-AnF" firstAttribute="top" secondItem="2yn-XS-M29" secondAttribute="bottom" constant="38" id="yC5-fh-aEu"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="exportAsSingleStoryboardToggle" destination="xNC-5e-rPw" id="7MZ-zU-ZOY"/>
                         <outlet property="exportButton" destination="ISJ-2O-AnF" id="RGf-1e-hcY"/>
+                        <outlet property="exportComboBox" destination="sbo-ol-u2Z" id="n5H-AK-oB1"/>
                         <outlet property="mainTableView" destination="brX-98-k4e" id="C0I-h7-Iqf"/>
                         <outlet property="removeXibButton" destination="gwa-O7-b41" id="QmC-hi-aaj"/>
                     </connections>
