@@ -7,7 +7,7 @@ xib2Storyboard is a handy tool to easily convert .xib files to .storyboard witho
 - Adds prototype cells to UITableViews
 
 
-<img src="Screenshots/screenshot-app.png">
+<img src="Screenshots/screenshot-app.png" alt="screenshot-app" width="40%" height="40%">
 
 
 ## Getting started
@@ -22,17 +22,16 @@ To run xib2Storyboard download this repo on macOS and run the xib2Storyboard.app
 
 1. Build & run the Xcode project (or run xib2Storyboard.app).
 2. Add view controller .xib file(s) by using the '+' button or dragging the files on the window.
-3. Enable the 'Combine to single Storyboard' checkbox to combine all .xib files into 1 .storyboard file or leave it save each .xib as a separate .storyboard file.
-4. Click the Export button. If 'Combine to single Storyboard' was enabled, you will be asked where to save the new .storyboard file, if not a new .storyboard file will be created for each .xib and placed in the same folder with the same name.
+3. Select one of the export options from the dropdown menu.
 5. Import the newly generated .storyboard files in your Xcode project.
 
 Before (.xib):
 
-<a href="Screenshots/screenshot-xib.png"><img src="Screenshots/screenshot-xib.png" alt="alt text" width="40%" height="40%"></a>
+<a href="Screenshots/screenshot-xib.png"><img src="Screenshots/screenshot-xib.png" alt="screenshot-xib" width="40%" height="40%"></a>
 
 After (.storyboard):
 
-<a href="Screenshots/screenshot-storyboard.png"><img src="Screenshots/screenshot-storyboard.png" alt="alt text" width="40%" height="40%"></a>
+<a href="Screenshots/screenshot-storyboard.png"><img src="Screenshots/screenshot-storyboard.png" alt="screenshot-storyboard" width="40%" height="40%"></a>
 
 
 
@@ -46,10 +45,6 @@ It has been thoroughly tested internally at November Five but not yet used in an
 ## Roadmap
 
 Currently the following releases are planned:
-
-#### xib2Storyboard 0.2.0 (March 2018)
-
-- Add .xib files to an existing .storyboard file
 
 #### xib2Storyboard 0.3.0 (TBD)
 

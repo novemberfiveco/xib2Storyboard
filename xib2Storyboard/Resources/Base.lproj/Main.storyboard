@@ -92,13 +92,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="500" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="5fq-xz-t0J">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="5fq-xz-t0J">
                                 <rect key="frame" x="20" y="79" width="460" height="246"/>
                                 <clipView key="contentView" id="2yn-XS-M29">
                                     <rect key="frame" x="1" y="0.0" width="458" height="245"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="p2c-gh-pRi" viewBased="YES" id="brX-98-k4e">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="22" rowSizeStyle="automatic" headerView="p2c-gh-pRi" viewBased="YES" id="brX-98-k4e">
                                             <rect key="frame" x="0.0" y="0.0" width="458" height="222"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -215,9 +215,9 @@
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sbo-ol-u2Z">
-                                <rect key="frame" x="147" y="17" width="253" height="26"/>
+                                <rect key="frame" x="107" y="17" width="293" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="Zed-Rm-ltg"/>
+                                    <constraint firstAttribute="width" priority="700" constant="290" id="Zed-Rm-ltg"/>
                                 </constraints>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Export to individual Storyboard's" drawsBackground="YES" completes="NO" numberOfVisibleItems="3" id="vaY-ZI-atx">
                                     <font key="font" metaFont="system"/>
@@ -237,6 +237,7 @@
                             <constraint firstItem="ISJ-2O-AnF" firstAttribute="leading" secondItem="sbo-ol-u2Z" secondAttribute="trailing" constant="15" id="D3z-WL-kC0"/>
                             <constraint firstItem="ISJ-2O-AnF" firstAttribute="trailing" secondItem="5fq-xz-t0J" secondAttribute="trailing" id="L2A-nK-i2m"/>
                             <constraint firstItem="5fq-xz-t0J" firstAttribute="top" secondItem="NEu-zX-WhJ" secondAttribute="top" constant="25" id="Sta-Cm-K5e"/>
+                            <constraint firstItem="sbo-ol-u2Z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="shR-Nb-WUI" secondAttribute="trailing" constant="20" id="UZQ-Zs-AvJ"/>
                             <constraint firstItem="ISJ-2O-AnF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NEu-zX-WhJ" secondAttribute="leading" constant="20" symbolic="YES" id="hIw-DG-m1T"/>
                             <constraint firstItem="5fq-xz-t0J" firstAttribute="centerX" secondItem="NEu-zX-WhJ" secondAttribute="centerX" id="hl1-AK-ece"/>
                             <constraint firstAttribute="bottom" secondItem="shR-Nb-WUI" secondAttribute="bottom" constant="18" id="i0q-aO-Nyi"/>
