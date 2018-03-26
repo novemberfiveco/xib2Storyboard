@@ -25,4 +25,16 @@
     // Insert code here to tear down your application
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)application {
+    return YES;
+}
+
+
+
+#pragma mark Menu item actions
+
+- (IBAction)didPressClose:(id)sender {
+    [[[NSApplication sharedApplication] mainWindow] close];
+}
+
 @end

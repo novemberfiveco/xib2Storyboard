@@ -43,6 +43,11 @@
                                                 <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="Dhg-Le-xox"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Close xib2storyboard" keyEquivalent="w" id="xiH-G3-492">
+                                            <connections>
+                                                <action selector="didPressClose:" target="Voe-Tx-rLC" id="xGS-dT-kp1"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
                                         <menuItem title="Quit xib2storyboard" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
