@@ -365,8 +365,30 @@ const CGFloat ViewControllerSpacing = 1000;
         NSXMLElement *sbResourcesElement = [[storyboardDocumentNode elementsForName:@"resources"] firstObject];
         NSXMLElement *xibResourcesElement = [[xibDocumentElement elementsForName:@"resources"] firstObject];
         
-        for (NSXMLNode *node in xibResourcesElement.children) {
-            [sbResourcesElement addChild:[node copy]];
+        
+        
+        for (NSXMLNode *xibNode in xibResourcesElement.children) {
+            
+            NSString *xibNodeName = [[[xibNode xmlElementOrNil] attributeForName:@"name"] stringValue];
+            
+            // Only add new resource if not yet in list
+            BOOL canAddNode = YES;
+            if (xibNodeName) {
+                
+                for (NSXMLNode *sbNode in sbResourcesElement.children) {
+                    
+                    NSString *sbNodeName = [[[sbNode xmlElementOrNil] attributeForName:@"name"] stringValue];
+                    if ([xibNodeName isEqualToString:sbNodeName]) {
+                        
+                        canAddNode = NO;
+                    }
+                }
+            }
+            
+            if (canAddNode) {
+                
+                [sbResourcesElement addChild:[xibNode copy]];
+            }
         }
         
         // Check for a file owner
