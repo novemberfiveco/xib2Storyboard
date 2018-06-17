@@ -293,6 +293,46 @@ const CGFloat ViewControllerSpacing = 1000;
     return [NSString stringWithCharacters:character length:1];
 }
 
++ (NSXMLElement *)randomizeIDsAndLinks:(NSXMLElement *)element {
+    
+    NSArray<NSString *> *IDs = [self getIDsFromElement:element];
+    
+    NSString *elementString = [element XMLString];
+    
+    NSArray<NSString *> *keysToReplace = @[@"id", @"destination", @"firstItem", @"secondItem"];
+    
+    for (NSString *ID in IDs) {
+        NSString *newID = [self generateUniqueObjectID];
+        
+        for (NSString *keyToReplace in keysToReplace) {
+            NSString *oldKeyString = [NSString stringWithFormat:@"%@=\"%@\"", keyToReplace, ID];
+            NSString *newKeyString = [NSString stringWithFormat:@"%@=\"%@\"", keyToReplace, newID];
+
+            elementString = [elementString stringByReplacingOccurrencesOfString:oldKeyString withString:newKeyString];
+        }
+    }
+    
+    return [[NSXMLElement alloc] initWithXMLString:elementString error:nil];
+}
+
++ (NSArray<NSString *> *)getIDsFromElement:(NSXMLElement *)parentElement {
+    
+    NSMutableArray *IDs = [NSMutableArray new];
+    
+    NSXMLNode *elementID = [parentElement attributeForName:@"id"];
+    if (elementID) {
+        [IDs addObject:[elementID stringValue]];
+    }
+    
+    for (id element in parentElement.children) {
+        if ([element isKindOfClass:[NSXMLElement class]]) {
+            [IDs addObjectsFromArray:[self getIDsFromElement:element]];
+        }
+    }
+    
+    return [IDs copy];
+}
+
 
 
 #pragma mark Manipulate Views
@@ -361,10 +401,8 @@ const CGFloat ViewControllerSpacing = 1000;
         if (xibFileOwnerElement) {
             
             // Create scene
-            NSXMLElement *sbScenesElement = [[storyboardDocumentNode elementsForName:@"scenes"] firstObject];
             NSString *sceneID = [self generateUniqueObjectID];
             NSXMLElement *sceneElement = [NSXMLElement elementWithName:@"scene" children:nil attributes:@[ [NSXMLNode attributeWithName:@"sceneID" stringValue:sceneID] ]];
-            [sbScenesElement addChild:sceneElement];
             
             NSXMLElement *objectsElement = [NSXMLElement elementWithName:@"objects"];
             [sceneElement addChild:objectsElement];
@@ -436,9 +474,16 @@ const CGFloat ViewControllerSpacing = 1000;
             
             [viewcontrollerElement addChild:connectionsElement];
             
-            for (NSXMLElement* otherElement in xibOtherElements) {
+            for (NSXMLElement *otherElement in xibOtherElements) {
                 [objectsElement addChild:[otherElement copy]];
             }
+            
+            // Randomize ID's
+            sceneElement = [self randomizeIDsAndLinks:sceneElement];
+            
+            // Add new scene to storyboard
+            NSXMLElement *sbScenesElement = [[storyboardDocumentNode elementsForName:@"scenes"] firstObject];
+            [sbScenesElement addChild:sceneElement];
         }
     }
 }
