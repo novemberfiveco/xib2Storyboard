@@ -3,7 +3,10 @@
 //  xib2Storyboard
 //
 //  Created by Dries Van Schevensteen on 25/03/2018.
-//  Copyright © 2018 November Five. All rights reserved.
+//  (c) 2018 November Five BVBA
+//
+//  For the full copyright and license information, please view the LICENSE
+//  file that was distributed with this source code.
 //
 
 #import "NSXMLLayoutDocument.h"

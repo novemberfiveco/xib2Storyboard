@@ -1,6 +1,6 @@
 //
 //  ViewController.h
-//  xib2storyboard
+//  xib2Storyboard
 //
 //  Created by Dries Van Schevensteen on 15/01/2018.
 //  (c) 2018 November Five BVBA
