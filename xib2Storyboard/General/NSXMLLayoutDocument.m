@@ -3,7 +3,10 @@
 //  xib2Storyboard
 //
 //  Created by Dries Van Schevensteen on 25/03/2018.
-//  Copyright © 2018 November Five. All rights reserved.
+//  (c) 2018 November Five BVBA
+//
+//  For the full copyright and license information, please view the LICENSE
+//  file that was distributed with this source code.
 //
 
 #import "NSXMLLayoutDocument.h"
@@ -290,6 +293,46 @@ const CGFloat ViewControllerSpacing = 1000;
     return [NSString stringWithCharacters:character length:1];
 }
 
++ (NSXMLElement *)randomizeIDsAndLinks:(NSXMLElement *)element {
+    
+    NSArray<NSString *> *IDs = [self getIDsFromElement:element];
+    
+    NSString *elementString = [element XMLString];
+    
+    NSArray<NSString *> *keysToReplace = @[@"id", @"destination", @"firstItem", @"secondItem"];
+    
+    for (NSString *ID in IDs) {
+        NSString *newID = [self generateUniqueObjectID];
+        
+        for (NSString *keyToReplace in keysToReplace) {
+            NSString *oldKeyString = [NSString stringWithFormat:@"%@=\"%@\"", keyToReplace, ID];
+            NSString *newKeyString = [NSString stringWithFormat:@"%@=\"%@\"", keyToReplace, newID];
+
+            elementString = [elementString stringByReplacingOccurrencesOfString:oldKeyString withString:newKeyString];
+        }
+    }
+    
+    return [[NSXMLElement alloc] initWithXMLString:elementString error:nil];
+}
+
++ (NSArray<NSString *> *)getIDsFromElement:(NSXMLElement *)parentElement {
+    
+    NSMutableArray *IDs = [NSMutableArray new];
+    
+    NSXMLNode *elementID = [parentElement attributeForName:@"id"];
+    if (elementID) {
+        [IDs addObject:[elementID stringValue]];
+    }
+    
+    for (id element in parentElement.children) {
+        if ([element isKindOfClass:[NSXMLElement class]]) {
+            [IDs addObjectsFromArray:[self getIDsFromElement:element]];
+        }
+    }
+    
+    return [IDs copy];
+}
+
 
 
 #pragma mark Manipulate Views
@@ -322,8 +365,30 @@ const CGFloat ViewControllerSpacing = 1000;
         NSXMLElement *sbResourcesElement = [[storyboardDocumentNode elementsForName:@"resources"] firstObject];
         NSXMLElement *xibResourcesElement = [[xibDocumentElement elementsForName:@"resources"] firstObject];
         
-        for (NSXMLNode *node in xibResourcesElement.children) {
-            [sbResourcesElement addChild:[node copy]];
+        
+        
+        for (NSXMLNode *xibNode in xibResourcesElement.children) {
+            
+            NSString *xibNodeName = [[[xibNode xmlElementOrNil] attributeForName:@"name"] stringValue];
+            
+            // Only add new resource if not yet in list
+            BOOL canAddNode = YES;
+            if (xibNodeName) {
+                
+                for (NSXMLNode *sbNode in sbResourcesElement.children) {
+                    
+                    NSString *sbNodeName = [[[sbNode xmlElementOrNil] attributeForName:@"name"] stringValue];
+                    if ([xibNodeName isEqualToString:sbNodeName]) {
+                        
+                        canAddNode = NO;
+                    }
+                }
+            }
+            
+            if (canAddNode) {
+                
+                [sbResourcesElement addChild:[xibNode copy]];
+            }
         }
         
         // Check for a file owner
@@ -358,10 +423,8 @@ const CGFloat ViewControllerSpacing = 1000;
         if (xibFileOwnerElement) {
             
             // Create scene
-            NSXMLElement *sbScenesElement = [[storyboardDocumentNode elementsForName:@"scenes"] firstObject];
             NSString *sceneID = [self generateUniqueObjectID];
             NSXMLElement *sceneElement = [NSXMLElement elementWithName:@"scene" children:nil attributes:@[ [NSXMLNode attributeWithName:@"sceneID" stringValue:sceneID] ]];
-            [sbScenesElement addChild:sceneElement];
             
             NSXMLElement *objectsElement = [NSXMLElement elementWithName:@"objects"];
             [sceneElement addChild:objectsElement];
@@ -433,9 +496,16 @@ const CGFloat ViewControllerSpacing = 1000;
             
             [viewcontrollerElement addChild:connectionsElement];
             
-            for (NSXMLElement* otherElement in xibOtherElements) {
+            for (NSXMLElement *otherElement in xibOtherElements) {
                 [objectsElement addChild:[otherElement copy]];
             }
+            
+            // Randomize ID's
+            sceneElement = [self randomizeIDsAndLinks:sceneElement];
+            
+            // Add new scene to storyboard
+            NSXMLElement *sbScenesElement = [[storyboardDocumentNode elementsForName:@"scenes"] firstObject];
+            [sbScenesElement addChild:sceneElement];
         }
     }
 }

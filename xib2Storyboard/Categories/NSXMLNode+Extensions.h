@@ -1,6 +1,6 @@
 //
 //  NSXMLNode+Extensions.h
-//  xib2storyboard
+//  xib2Storyboard
 //
 //  Created by David De Bels on 10/12/2017.
 //  (c) 2017 November Five BVBA
