@@ -299,7 +299,7 @@ const CGFloat ViewControllerSpacing = 1000;
     
     NSString *elementString = [element XMLString];
     
-    NSArray<NSString *> *keysToReplace = @[@"id", @"destination", @"firstItem", @"secondItem"];
+    NSArray<NSString *> *keysToReplace = @[@"id", @"destination", @"firstItem", @"secondItem", @"reference"];
     
     for (NSString *ID in IDs) {
         NSString *newID = [self generateUniqueObjectID];
