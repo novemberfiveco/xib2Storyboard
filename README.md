@@ -46,7 +46,7 @@ It has been thoroughly tested internally at November Five but not yet used in an
 
 Currently the following releases are planned:
 
-#### xib2Storyboard 0.3.0 (TBD)
+#### xib2Storyboard 1.0.0 (TBD)
 
 - Support for macOS Interface Builder Files
 - Convert a .storyboard to multipe .storyboard's
