@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.4.0 (2018-05-19)
+
+Close xib2Storyboard on close window
+Added cmd + w shortcut
+Fixed an issue where traits are not respected for constraints and views
+
 ## v0.3.0 (2018-05-17)
 
 Fixed an issue where not all outlets or object id's are randomized
