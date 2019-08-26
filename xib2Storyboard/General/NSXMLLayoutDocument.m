@@ -452,6 +452,11 @@ const CGFloat ViewControllerSpacing = 1000;
             }
             
             NSXMLElement *viewcontrollerElement = [NSXMLElement elementWithName:@"viewController" children:nil attributes:viewcontrollerAttributes];
+            
+            /*
+             Add some children to the @"viewController" to have view right inside the container viewController
+             */
+            
             [objectsElement addChild:viewcontrollerElement];
             
             // Create first responder
@@ -469,12 +474,24 @@ const CGFloat ViewControllerSpacing = 1000;
             NSString *viewID = nil;
             
             // Copy outlets except for view
+            /*
+             The outlet can be nil all the time because xibOutletElements can be not found
+             */
             for (NSXMLElement *element in xibOutletElements) {
                 if ([[[element attributeForName:@"property"] stringValue] isEqualToString:@"view"]) {
                     viewID = [[element attributeForName:@"destination"] stringValue];
                 }
                 else {
                     [connectionsElement addChild:[element copy]];
+                }
+            }
+            
+            /*
+             Force find the viewID value
+             */
+            if (viewID == nil) {
+                if (xibViewElements.firstObject) {
+                    viewID = [[xibViewElements.firstObject  attributeForName:@"id"] stringValue];
                 }
             }
             
